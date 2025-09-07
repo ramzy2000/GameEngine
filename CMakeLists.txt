@@ -13,10 +13,17 @@ FetchContent_Declare(SFML
 FetchContent_MakeAvailable(SFML)
 
 # Grab all source files
-file(GLOB_RECURSE SOURCES "src/*.cpp" "src/*.h")
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS
+    "src/*.cpp"
+    "src/*.h"
+)
 
 # Create the executable target
 add_executable(main ${SOURCES})
+
+# Organize files in Visual Studio filters based on folder structure
+source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}/src" FILES ${SOURCES})
+
 
 target_compile_features(main PRIVATE cxx_std_17)
 target_link_libraries(main PRIVATE SFML::Graphics)

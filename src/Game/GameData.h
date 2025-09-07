@@ -1,8 +1,8 @@
 #ifndef GAME_DATE_H
 #define GAME_DATE_H
-#include "InputSystem.h"
-#include "RenderSystem.h"
-#include "Level.h"
+#include "../Entity/System/InputSystem.h"
+#include "../Entity/System/RenderSystem.h"
+#include "../Level/Level.h"
 #include <stack>
 
 class GameData

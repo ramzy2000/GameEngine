@@ -1,8 +1,7 @@
 #ifndef ACTION_H
 #define ACTION_H
 
-#include "Entity.h"
-
+#include "../Entity.h"
 #include <memory>
 #include <SFML/Graphics.hpp>
 

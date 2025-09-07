@@ -1,5 +1,5 @@
 #include "Level.h"
-#include "SpriteComponent.h"
+#include "../Entity/Component/SpriteComponent.h"
 
 void Level::SpawnEntity(std::shared_ptr<Entity> entity, sf::Vector2f position)
 {

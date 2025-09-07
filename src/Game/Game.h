@@ -2,12 +2,12 @@
 #define GAME_H
 
 #include <SFML/Graphics.hpp>
-#include "Entity.h"
-#include "InputSystem.h"
-#include "RenderSystem.h"
-#include "Level.h"
+#include "../Entity/Entity.h"
+#include "../Entity/System/InputSystem.h"
+#include "../Entity/System/RenderSystem.h"
+#include "../Level/Level.h"
 #include <stack>
-#include "GameData.h"
+#include "../Game/GameData.h"
 
 
 // Contains everything you need for the game loop

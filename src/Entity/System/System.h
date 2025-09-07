@@ -1,7 +1,7 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 #include <memory>
-#include "Entity.h"
+#include "../Entity.h"
 #include <SFML/Graphics.hpp>
 
 class System

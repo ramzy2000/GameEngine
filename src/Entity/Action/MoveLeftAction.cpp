@@ -1,6 +1,6 @@
 #include "MoveLeftAction.h"
-#include "SpriteComponent.h"
-#include "VelocityComponent.h"
+#include "../Component/SpriteComponent.h"
+#include "../Component/VelocityComponent.h"
 
 void MoveLeftAction::perform(std::shared_ptr<Entity> entity, sf::Time deltaTime)
 {

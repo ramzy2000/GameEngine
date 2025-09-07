@@ -1,5 +1,5 @@
 #include "RenderSystem.h"
-#include "SpriteComponent.h"
+#include "../Component/SpriteComponent.h"
 
 void RenderSystem::update(sf::RenderWindow* window, sf::Time deltaTime)
 {

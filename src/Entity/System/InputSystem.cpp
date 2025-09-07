@@ -1,6 +1,6 @@
 #include "InputSystem.h"
-#include "InputComponent.h"
-#include "Action.h"
+#include "../Component/InputComponent.h"
+#include "../Action/Action.h"
 #include <SFML/Graphics.hpp>
 
 void InputSystem::update(sf::Time deltaTime)

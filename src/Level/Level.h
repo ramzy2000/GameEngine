@@ -2,10 +2,10 @@
 #define LEVEL_H
 #include <memory>
 #include <list>
-#include "Entity.h"
+#include "../Entity/Entity.h"
 #include <SFML/Graphics.hpp>
-#include "InputSystem.h"
-#include "RenderSystem.h"
+#include "../Entity/System/InputSystem.h"
+#include "../Entity/System/RenderSystem.h"
 
 class Level
 {

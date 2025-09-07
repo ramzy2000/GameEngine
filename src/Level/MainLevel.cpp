@@ -1,6 +1,6 @@
 #include "MainLevel.h"
-#include "Player.h"
-#include "NPC.h"
+#include "../Entity/Actor/Pawn/Player.h"
+#include "../Entity/Actor/Pawn/NPC.h"
 
 MainLevel::MainLevel()
 {

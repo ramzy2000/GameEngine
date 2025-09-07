@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "PlayerInputComponent.h"
+#include "../../Component/PlayerInputComponent.h"
 
 Player::Player()
 {

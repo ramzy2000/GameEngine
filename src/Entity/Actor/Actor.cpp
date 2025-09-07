@@ -1,7 +1,7 @@
 #include "Actor.h"
-#include "SpriteComponent.h"
-#include "InputComponent.h"
-#include "VelocityComponent.h"
+#include "../Component/SpriteComponent.h"
+#include "../Component/InputComponent.h"
+#include "../Component/VelocityComponent.h"
 
 Actor::Actor()
 {

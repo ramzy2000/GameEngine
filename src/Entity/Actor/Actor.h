@@ -1,7 +1,7 @@
 #ifndef ACTORY_H
 #define ACTORY_H
-#include "Entity.h"
-#include "Action.h"
+#include "../Entity.h"
+#include "../Action/Action.h"
 
 class Actor : public Entity
 {

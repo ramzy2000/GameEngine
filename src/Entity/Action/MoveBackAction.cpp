@@ -1,6 +1,6 @@
 #include "MoveBackAction.h"
-#include "SpriteComponent.h"
-#include "VelocityComponent.h"
+#include "../Component/SpriteComponent.h"
+#include "../Component/VelocityComponent.h"
 
 void MoveBackAction::perform(std::shared_ptr<Entity> entity, sf::Time deltaTime)
 {
