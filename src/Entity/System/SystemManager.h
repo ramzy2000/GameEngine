@@ -2,10 +2,13 @@
 #define SYSTEM_MANAGER_H
 
 #include "System.h"
-#include "../../Game/GameData.h"
 #include "../Entity.h"
+#include "../System/InputSystem.h"
+#include "../System/RenderSystem.h"
 #include <array>
 #include <vector>
+
+class GameData;
 
 // Store a list of pointers to each system.
 
@@ -18,11 +21,14 @@ static const unsigned int MAX_SYSTEMS = 10;
 
 class SystemManager
 {
-    std::vector<std::shared_ptr<System>> systems;
+    InputSystem inputSystem;
+    RenderSystem renderSystem;
     std::shared_ptr<GameData> gameData;
 public:
     SystemManager(std::shared_ptr<GameData> gameData);
     void Update(std::shared_ptr<Entity> entity, sf::Time deltaTime);
 };
+
+
 
 #endif //!SYSTEM_MANAGER_H

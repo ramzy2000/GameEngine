@@ -3,21 +3,17 @@
 #include "../Action/Action.h"
 #include <SFML/Graphics.hpp>
 
-void InputSystem::update(sf::Time deltaTime)
+void InputSystem::update(std::shared_ptr<Entity> entity, sf::Time deltaTime)
 {
-	// process entites inputs
-	for (std::shared_ptr<Entity> entity : entities)
+	std::shared_ptr<InputComponent> inputComponent = entity->getComponent<InputComponent>();
+	if (inputComponent)
 	{
-		std::shared_ptr<InputComponent> inputComponent = entity->getComponent<InputComponent>();
-		if (inputComponent)
+		auto actions = inputComponent->HandleInput();
+		for (std::shared_ptr<Action> action : actions)
 		{
-			auto actions = inputComponent->HandleInput();
-			for (std::shared_ptr<Action> action : actions)
+			if (action)
 			{
-				if (action)
-				{
-					action->perform(entity, deltaTime);
-				}
+				action->perform(entity, deltaTime);
 			}
 		}
 	}

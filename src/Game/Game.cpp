@@ -1,72 +1,37 @@
 #include "Game.h"
 #include <iostream>
 #include "../Level/MainLevel.h"
+#include "../Entity/System/SystemManager.h"
 
 Game::Game()
 {
-    data = std::make_shared<GameData>();
-    window = sf::RenderWindow(sf::VideoMode({ 1920u, 1080u }), "CMake SFML Project");
-    window.setFramerateLimit(144);
+    data = std::make_shared<GameData>(); // Create game data object
+    data->systemManager = std::make_shared<SystemManager>(data); // Create System Manager
+
+    // setup window
+    data->window = sf::RenderWindow(sf::VideoMode({ 1920u, 1080u }), "CMake SFML Project");
+    data->window.setFramerateLimit(144);
 }
 
 void Game::processEvents()
 {
-    while (const std::optional event = window.pollEvent())
+    while (const std::optional event = data->window.pollEvent())
     {
         if (event->is<sf::Event::Closed>())
         {
-            window.close();
+            data->window.close();
         }
     }
 }
 
 void Game::update(sf::Time deltaTime)
 {
-    // loading and unloading levels
-    if (data->isAdding || data->isRemoveing)
+    // get the list of all entities on the top loaded level
+    std::list<std::shared_ptr<Entity>> entites = data->levels.top()->GetList();
+    for (std::shared_ptr<Entity> entity : entites)
     {
-        // clear the systems
-        data->inputSystem.clearEntities();
-        data->renderSystem.clearEntities();
-
-        // process the top most level entites into systems
-        auto entites = data->levels.top()->GetList();
-        for (auto& entity : entites)
-        {
-            data->inputSystem.addEntity(entity);
-            data->renderSystem.addEntity(entity);
-        }
-
-        if (data->isAdding)
-        {
-            data->isAdding = false;
-        }
-
-        if (data->isRemoveing)
-        {
-            data->isRemoveing = false;
-        }
+        data->systemManager->Update(entity, deltaTime);
     }
-    
-
-    // process systems
-    data->inputSystem.update(deltaTime);
-    data->renderSystem.update(&window, deltaTime);
-}
-
-void Game::handelKeyEvent(sf::Keyboard::Key key, bool isPressed)
-{
-
-}
-
-void Game::render()
-{
-
-}
-
-void Game::resizeBackground()
-{
-
 }
 
 void Game::run()
@@ -74,17 +39,18 @@ void Game::run()
     // load level
     this->AddLevel(std::make_shared<MainLevel>(), false);
 
-    while (window.isOpen())
+    // start the game loop
+    while (data->window.isOpen())
     {
         processEvents();
 
         dt = deltaClock.restart();
 
-        window.clear();
+        data->window.clear();
 
         update(dt);
         
-        window.display();
+        data->window.display();
     }
 }
 

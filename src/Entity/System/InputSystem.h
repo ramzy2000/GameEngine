@@ -8,7 +8,7 @@
 class InputSystem : public System
 {
 public:
-	void update(sf::Time deltaTime) override;
+	void update(std::shared_ptr<Entity> entity, sf::Time deltaTime) override;
 };
 
 #endif //!INPUT_SYSTEM_H

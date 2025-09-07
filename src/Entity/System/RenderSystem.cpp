@@ -1,10 +1,7 @@
 #include "RenderSystem.h"
 #include "../Component/SpriteComponent.h"
 
-void RenderSystem::update(sf::RenderWindow* window, sf::Time deltaTime)
+void RenderSystem::update(sf::RenderWindow* window, std::shared_ptr<Entity> entity, sf::Time deltaTime)
 {
-	for (std::shared_ptr<Entity> entity : entities)
-	{
-		entity->getComponent<SpriteComponent>()->Draw(*window);
-	}
+	entity->getComponent<SpriteComponent>()->Draw(*window);
 }
