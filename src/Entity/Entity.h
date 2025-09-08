@@ -6,7 +6,10 @@
 #include <typeindex>
 #include <typeinfo>
 
-class Entity
+
+using Entity = std::uint32_t;
+
+/*class Entity
 {
 protected:
 	std::unordered_map<std::type_index, std::shared_ptr<void>> components;
@@ -27,7 +30,7 @@ public:
 		}
 		return nullptr;
 	}
-};
+};*/
 
 #endif // !ENTITYH_H
 
