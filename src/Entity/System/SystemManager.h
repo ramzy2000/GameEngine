@@ -5,6 +5,7 @@
 #include "../Entity.h"
 #include "../System/InputSystem.h"
 #include "../System/RenderSystem.h"
+#include "../System/CameraSystem.h"
 #include <array>
 #include <vector>
 
@@ -23,6 +24,7 @@ class SystemManager
 {
     InputSystem inputSystem;
     RenderSystem renderSystem;
+    CameraSystem cameraSystem;
     std::shared_ptr<GameData> gameData;
 public:
     SystemManager(std::shared_ptr<GameData> gameData);
