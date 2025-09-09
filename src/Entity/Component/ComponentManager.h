@@ -23,7 +23,32 @@ class ComponentManager
 	}
 
 public:
+    template<typename T>
+    void registerComponent() {
+        std::type_index type = typeid(T);
+        assert(componentArrays.find(type) == componentArrays.end() && "Component already registered.");
+        componentArrays[type] = std::make_unique<ComponentArray<T>>();
+    }
 
+    template<typename T>
+    void addComponent(Entity entity, T component) {
+        getArray<T>()->insert(entity, component);
+    }
+
+    template<typename T>
+    void removeComponent(Entity entity) {
+        getArray<T>()->remove(entity);
+    }
+
+    template<typename T>
+    T& getComponent(Entity entity) {
+        return getArray<T>()->get(entity);
+    }
+
+    template<typename T>
+    bool hasComponent(Entity entity) const {
+        return getArray<T>()->has(entity);
+    }
 };
 
 #endif //!COMPONENT_MANAGER_H
