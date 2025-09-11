@@ -17,7 +17,7 @@ public:
 	void insert(Entity entity, T component)
 	{
 		// insert the entity
-		assert(entityToIndex.find(entity) == entity.end() && "Component already exists");
+		assert(entityToIndex.find(entity) == entityToIndex.end() && "Component already exists");
 		std::size_t index = components.size(); // get current index
 		entityToIndex[entity] = index;
 		indexToEntity[index] = entity;
@@ -27,7 +27,7 @@ public:
 	void remove(Entity entity) override
 	{
 		auto it = entityToIndex.find(entity);
-		if (it = entityToIndex.end())
+		if (it == entityToIndex.end())
 		{
 			return; // no entity found.
 		}

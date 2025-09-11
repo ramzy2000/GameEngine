@@ -28,7 +28,7 @@ class SystemManager
     std::shared_ptr<GameData> gameData;
 public:
     SystemManager(std::shared_ptr<GameData> gameData);
-    void Update(std::shared_ptr<Entity> entity, sf::Time deltaTime);
+    void Update(sf::Time deltaTime);
 };
 
 

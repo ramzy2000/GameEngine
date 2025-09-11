@@ -5,9 +5,9 @@
 
 class RenderSystem : public System
 {
-	void update(std::shared_ptr<Entity> entity, sf::Time deltaTime) override {};
 public:
-	void update(sf::RenderWindow* window, std::shared_ptr<Entity> entity, sf::Time deltaTime);
+
+	void update(ComponentManager& componentManager, std::vector<Entity> entities, sf::Time deltaTime);
 };
 
 #endif // !RENDER_SYSTEM

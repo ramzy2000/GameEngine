@@ -7,10 +7,10 @@ SystemManager::SystemManager(std::shared_ptr<GameData> gameData)
 	this->gameData = gameData;
 }
 
-void SystemManager::Update(std::shared_ptr<Entity> entity, sf::Time deltaTime)
+void SystemManager::Update(sf::Time deltaTime)
 {
     // update all systems for this entity
-	inputSystem.update(entity, deltaTime);
-	cameraSystem.update(&gameData->window, entity, deltaTime);
-	renderSystem.update(&gameData->window, entity, deltaTime);
+	inputSystem.update(gameData->componentManager, gameData->entities, deltaTime);
+	cameraSystem.update(gameData->componentManager, gameData->entities, deltaTime);
+	renderSystem.update(gameData->componentManager, gameData->entities, deltaTime);
 }

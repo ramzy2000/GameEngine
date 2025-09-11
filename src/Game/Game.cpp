@@ -1,7 +1,12 @@
 #include "Game.h"
 #include <iostream>
-#include "../Level/MainLevel.h"
 #include "../Entity/System/SystemManager.h"
+#include "../Entity//Component/SpriteComponent.h"
+#include "../Entity//Component/VelocityComponent.h"
+#include "../Entity//Component/CameraComponent.h"
+#include "../Entity//Component/InputComponent.h"
+#include "../Entity//Component/PlayerInputComponent.h"
+#include "../Entity/Actor/Actor.h"
 
 Game::Game()
 {
@@ -11,6 +16,17 @@ Game::Game()
     // setup window
     data->window = sf::RenderWindow(sf::VideoMode({ 1920u, 1080u }), "CMake SFML Project");
     data->window.setFramerateLimit(144);
+
+    // register components
+    data->componentManager.registerComponent<SpriteComponent>();
+    data->componentManager.registerComponent<VelocityComponent>();
+    data->componentManager.registerComponent<CameraComponent>();
+    data->componentManager.registerComponent<InputComponent>();
+    data->componentManager.registerComponent<PlayerInputComponent>();
+
+    Actor actor(data);
+
+    data->entities.push_back(actor.GetEntityId());
 }
 
 void Game::processEvents()
@@ -27,17 +43,14 @@ void Game::processEvents()
 void Game::update(sf::Time deltaTime)
 {
     // get the list of all entities on the top loaded level
-    std::list<std::shared_ptr<Entity>> entites = data->levels.top()->GetList();
-    for (std::shared_ptr<Entity> entity : entites)
+    for (Entity entity : data->entities)
     {
-        data->systemManager->Update(entity, deltaTime);
+        data->systemManager->Update(deltaTime);
     }
 }
 
 void Game::run()
 {
-    // load level
-    this->AddLevel(std::make_shared<MainLevel>(), false);
 
     // start the game loop
     while (data->window.isOpen())
@@ -52,23 +65,4 @@ void Game::run()
         
         data->window.display();
     }
-}
-
-void Game::AddLevel(std::shared_ptr<Level> level, bool isReplacing)
-{
-    if (isReplacing)
-    {
-        data->levels.pop();
-        data->levels.push(level);
-
-        return;
-    }
-    data->levels.push(level);
-    data->isAdding = true;
-}
-
-void Game::RemoveLevel()
-{
-    data->levels.pop();;
-    data->isRemoveing = false;
 }

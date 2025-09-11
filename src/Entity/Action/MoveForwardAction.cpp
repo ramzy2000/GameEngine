@@ -3,12 +3,12 @@
 #include "../Component/VelocityComponent.h"
 #include <iostream>
 
-void MoveForwardAction::perform(std::shared_ptr<Entity> entity, sf::Time deltaTime)
+void MoveForwardAction::perform(ComponentManager& componentManager, Entity entity, sf::Time deltaTime)
 {
-	std::shared_ptr<SpriteComponent> spriteComponent = entity->getComponent<SpriteComponent>();
-	std::shared_ptr<VelocityComponent> velocityComponent = entity->getComponent<VelocityComponent>();
-	if (spriteComponent && velocityComponent)
+	if (componentManager.hasComponent<VelocityComponent>(entity) && componentManager.hasComponent<SpriteComponent>(entity))
 	{
-		spriteComponent->Move(sf::Vector2f({0.0f, -velocityComponent->GetVelocity()* deltaTime.asSeconds()}));
+		SpriteComponent& spriteComponent = componentManager.getComponent<SpriteComponent>(entity);
+		VelocityComponent& velocityComponent = componentManager.getComponent<VelocityComponent>(entity);
+		spriteComponent.Move(sf::Vector2f({ 0.0f, -1*(velocityComponent.GetVelocity() * deltaTime.asSeconds()) }));
 	}
 }

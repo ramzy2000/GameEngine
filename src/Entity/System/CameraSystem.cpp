@@ -1,14 +1,18 @@
 #include "CameraSystem.h"
 #include "../Component/CameraComponent.h"
 #include "../Component/SpriteComponent.h"
+#include "../../Game/GameData.h"
 
-void CameraSystem::update(sf::RenderWindow* window, std::shared_ptr<Entity> entity, sf::Time deltaTime)
+void CameraSystem::update(ComponentManager& componentManager, std::vector<Entity> entities, sf::Time deltaTime)
 {
-	std::shared_ptr<CameraComponent> cameraComponent = entity->getComponent<CameraComponent>();
-	std::shared_ptr<SpriteComponent> spriteComponent = entity->getComponent<SpriteComponent>();
-	if (cameraComponent && spriteComponent)
+	for (auto& entity : entities)
 	{
-		cameraComponent->GetView().setCenter(spriteComponent->GetPosition() + cameraComponent->GetOffset());
-		window->setView(cameraComponent->GetView());
+		if (componentManager.hasComponent<CameraComponent>(entity) && componentManager.hasComponent<SpriteComponent>(entity))
+		{
+			SpriteComponent spriteComponent = componentManager.getComponent<SpriteComponent>(entity);
+			CameraComponent cameraComponent = componentManager.getComponent<CameraComponent>(entity);
+			cameraComponent.GetView().setCenter(spriteComponent.GetPosition() + cameraComponent.GetOffset());
+			GameData::getRenderWindow().setView(cameraComponent.GetView());
+		}
 	}
 }

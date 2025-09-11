@@ -1,18 +1,24 @@
 #ifndef GAME_DATE_H
 #define GAME_DATE_H
 #include "../Entity/System/InputSystem.h"
-#include "../Level/Level.h"
 #include <stack>
 #include "../Entity/System/SystemManager.h"
-
+#include "../Entity/Component/ComponentManager.h"
+#include "../Game/EntityManager.h"
 class GameData
 {
 public:
+	ComponentManager componentManager;
+	EntityManager entityManager;
+
 	std::shared_ptr<SystemManager> systemManager;
-	sf::RenderWindow window;
-	std::stack <std::shared_ptr<Level>> levels;
+	static sf::RenderWindow window;
+	//std::stack <std::shared_ptr<Level>> levels;
+	std::vector<Entity> entities;
 	bool isAdding = false;
 	bool isRemoveing = false;
+
+	static sf::RenderWindow& getRenderWindow();
 };
 
 

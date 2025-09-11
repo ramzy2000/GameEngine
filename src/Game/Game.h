@@ -3,7 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 #include "../Entity/Entity.h"
-#include "../Level/Level.h"
 #include <stack>
 #include "../Game/GameData.h"
 
@@ -14,10 +13,6 @@ class Game
 public:
 	Game();
 	void run();
-
-	void AddLevel(std::shared_ptr<Level> level, bool isReplacing);
-
-	void RemoveLevel();
 
 private:
 	void processEvents();
