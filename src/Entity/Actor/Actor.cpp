@@ -20,10 +20,6 @@ Actor::Actor(std::shared_ptr<GameData> gameData)
 	gameData->componentManager.addComponent<SpriteComponent>(entity_id, SpriteComponent());
 	SpriteComponent& spriteComponent = gameData->componentManager.getComponent<SpriteComponent>(this->entity_id);
 	spriteComponent.SetTexture("../Textures/Player.png");
-
-	gameData->componentManager.addComponent<VelocityComponent>(entity_id, VelocityComponent());
-
-	gameData->componentManager.addComponent<PlayerInputComponent>(entity_id, PlayerInputComponent());
 }
 
 Actor::~Actor()

@@ -6,7 +6,7 @@
 #include "../Entity//Component/CameraComponent.h"
 #include "../Entity//Component/InputComponent.h"
 #include "../Entity//Component/PlayerInputComponent.h"
-#include "../Entity/Actor/Actor.h"
+#include "../Entity/Actor/Player.h"
 
 Game::Game()
 {
@@ -24,9 +24,9 @@ Game::Game()
     data->componentManager.registerComponent<InputComponent>();
     data->componentManager.registerComponent<PlayerInputComponent>();
 
-    Actor actor(data);
+    Player player(data);
 
-    data->entities.push_back(actor.GetEntityId());
+    data->entities.push_back(player.GetEntityId());
 }
 
 void Game::processEvents()

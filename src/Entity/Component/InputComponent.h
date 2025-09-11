@@ -13,7 +13,7 @@ protected:
 public:
 	InputComponent();
 
-	virtual std::vector<std::shared_ptr<Action>> HandleInput() = 0;
+	virtual std::vector<std::shared_ptr<Action>> HandleInput() { return std::vector<std::shared_ptr<Action>>(); }
 };
 
 #endif // !INPUT_COMPONENT
