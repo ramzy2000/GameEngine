@@ -43,10 +43,7 @@ void Game::processEvents()
 void Game::update(sf::Time deltaTime)
 {
     // get the list of all entities on the top loaded level
-    for (Entity entity : data->entities)
-    {
-        data->systemManager->Update(deltaTime);
-    }
+    data->systemManager->Update(deltaTime);
 }
 
 void Game::run()
