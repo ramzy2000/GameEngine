@@ -8,6 +8,7 @@
 #include "Entity/Component/PlayerInputComponent.h"
 #include "Entity/Actor/Player.h"
 #include "Entity/Actor/NPC.h"
+#include "Entity/Actor/BackgroundImage.h"
 #include <filesystem>
 #include "Game/GameData.h"
 
@@ -30,6 +31,8 @@ Game::Game()
     // load textures
     std::string path = std::filesystem::current_path().parent_path().generic_string() + "/Textures/Player.png";
     GameData::instance().assetManager.LoadTexture(path, "player_texture");
+    std::string path2 = std::filesystem::current_path().parent_path().generic_string() + "/Textures/background.jpg";
+    GameData::instance().assetManager.LoadTexture(path2, "background_texture");
 }
 
 void Game::processEvents()
@@ -50,6 +53,11 @@ void Game::update(sf::Time deltaTime)
 
 void Game::run()
 {
+
+    std::shared_ptr<BackgroundImage> backgroundImage = std::make_shared<BackgroundImage>();
+    backgroundImage->setPosition(-100.f, 0.f);
+    GameData::instance().entities.push_back(backgroundImage->GetEntityId());
+
     // load entities
     std::shared_ptr<Player> player = std::make_shared<Player>();
     player->setPosition(0.f, 0.f);
@@ -58,6 +66,10 @@ void Game::run()
     std::shared_ptr<NPC> npc = std::make_shared<NPC>();
     npc->setPosition(0.f, 0.f);
     GameData::instance().entities.push_back(npc->GetEntityId());
+
+    
+
+    
 
     // start the game loop
     while (GameData::instance().window.isOpen())
