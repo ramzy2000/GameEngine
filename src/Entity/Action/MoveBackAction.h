@@ -2,7 +2,7 @@
 #define MOVE_BACK_ACTION
 
 #include "Action.h"
-#include "../Component/ComponentManager.h"
+#include "Entity/Component/ComponentManager.h"
 
 class MoveBackAction : public Action
 {

@@ -1,11 +1,11 @@
 #ifndef GAME_DATE_H
 #define GAME_DATE_H
-#include "../Entity/System/InputSystem.h"
+#include "Entity/System/InputSystem.h"
 #include <stack>
-#include "../Entity/System/SystemManager.h"
-#include "../Entity/Component/ComponentManager.h"
-#include "../Game/AssetManager.h"
-#include "../Game/EntityManager.h"
+#include "Entity/System/SystemManager.h"
+#include "Entity/Component/ComponentManager.h"
+#include "Game/AssetManager.h"
+#include "Game/EntityManager.h"
 
 class GameData
 {

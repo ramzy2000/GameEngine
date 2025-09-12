@@ -2,10 +2,10 @@
 #define SYSTEM_MANAGER_H
 
 #include "System.h"
-#include "../Entity.h"
-#include "../System/InputSystem.h"
-#include "../System/RenderSystem.h"
-#include "../System/CameraSystem.h"
+#include "Entity/Entity.h"
+#include "Entity/System/InputSystem.h"
+#include "Entity/System/RenderSystem.h"
+#include "Entity/System/CameraSystem.h"
 #include <array>
 #include <vector>
 

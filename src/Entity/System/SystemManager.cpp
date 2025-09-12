@@ -1,6 +1,6 @@
 #include "SystemManager.h"
 
-#include "../../Game/GameData.h"
+#include "Game/GameData.h"
 
 SystemManager::SystemManager(std::shared_ptr<GameData> gameData)
 {

@@ -1,6 +1,6 @@
 #include "MoveRightAction.h"
-#include "../Component/SpriteComponent.h"
-#include "../Component/VelocityComponent.h"
+#include "Entity/Component/SpriteComponent.h"
+#include "Entity/Component/VelocityComponent.h"
 
 void MoveRightAction::perform(ComponentManager& componentManager, Entity entity, sf::Time deltaTime)
 {

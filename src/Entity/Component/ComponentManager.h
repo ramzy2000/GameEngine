@@ -3,9 +3,9 @@
 
 #include <unordered_map>
 #include <vector>
-#include "../Entity.h"
-#include "../Component/IComponentArray.h"
-#include "../Component/ComponentArray.h"
+#include "Entity/Entity.h"
+#include "Entity/Component/IComponentArray.h"
+#include "Entity/Component/ComponentArray.h"
 #include <typeindex>
 #include <cassert>
 

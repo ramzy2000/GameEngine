@@ -1,8 +1,8 @@
 #include "Actor.h"
-#include "../Component/SpriteComponent.h"
-#include "../Component/InputComponent.h"
-#include "../Component/PlayerInputComponent.h"
-#include "../Component/VelocityComponent.h"
+#include "Entity/Component/SpriteComponent.h"
+#include "Entity/Component/InputComponent.h"
+#include "Entity/Component/PlayerInputComponent.h"
+#include "Entity/Component/VelocityComponent.h"
 
 void Actor::generateId()
 {

@@ -1,10 +1,10 @@
 #ifndef SYSTEM_H
 #define SYSTEM_H
 #include <memory>
-#include "../Entity.h"
+#include "Entity/Entity.h"
 #include <SFML/Graphics.hpp>
 
-#include "../Component/ComponentManager.h"
+#include "Entity/Component/ComponentManager.h"
 
 class System
 {

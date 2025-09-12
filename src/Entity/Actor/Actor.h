@@ -1,8 +1,8 @@
 #ifndef ACTORY_H
 #define ACTORY_H
-#include "../Entity.h"
-#include "../Action/Action.h"
-#include "../../Game/GameData.h"
+#include "Entity/Entity.h"
+#include "Entity/Action/Action.h"
+#include "Game/GameData.h"
 
 class Actor
 {

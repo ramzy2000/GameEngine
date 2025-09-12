@@ -1,8 +1,8 @@
 #include "InputComponent.h"
-#include "../Action/MoveForwardAction.h"
-#include "../Action/MoveBackAction.h"
-#include "../Action/MoveLeftAction.h"
-#include "../Action/MoveRightAction.h"
+#include "Entity/Action/MoveForwardAction.h"
+#include "Entity/Action/MoveBackAction.h"
+#include "Entity/Action/MoveLeftAction.h"
+#include "Entity/Action/MoveRightAction.h"
 #include <SFML/Graphics.hpp>
 
 InputComponent::InputComponent()

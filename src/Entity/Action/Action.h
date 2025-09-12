@@ -1,11 +1,9 @@
 #ifndef ACTION_H
 #define ACTION_H
-
-#include "../Entity.h"
+#include "Entity/Entity.h"
 #include <memory>
 #include <SFML/Graphics.hpp>
-
-#include "../Component/ComponentManager.h"
+#include "Entity/Component/ComponentManager.h"
 
 class Action
 {

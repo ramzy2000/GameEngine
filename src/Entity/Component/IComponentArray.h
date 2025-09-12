@@ -1,7 +1,7 @@
 #ifndef ICOMPONENT_ARRAY_H
 #define ICOMPONENT_ARRAY_H
 
-#include "../Entity.h"
+#include "Entity/Entity.h"
 
 class IComponentArray
 {

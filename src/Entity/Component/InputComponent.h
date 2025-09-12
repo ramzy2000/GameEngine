@@ -1,7 +1,7 @@
 #ifndef INPUT_COMPONENT
 #define INPUT_COMPONENT
 
-#include "../Action/Action.h"
+#include "Entity/Action/Action.h"
 
 class InputComponent
 {

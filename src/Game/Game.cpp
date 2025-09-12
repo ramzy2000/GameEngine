@@ -1,13 +1,14 @@
 #include "Game.h"
 #include <iostream>
-#include "../Entity/System/SystemManager.h"
-#include "../Entity//Component/SpriteComponent.h"
-#include "../Entity//Component/VelocityComponent.h"
-#include "../Entity//Component/CameraComponent.h"
-#include "../Entity//Component/InputComponent.h"
-#include "../Entity//Component/PlayerInputComponent.h"
-#include "../Entity/Actor/Player.h"
-#include "../Entity/Actor/NPC.h"
+#include "Entity/System/SystemManager.h"
+#include "Entity/Component/SpriteComponent.h"
+#include "Entity/Component/VelocityComponent.h"
+#include "Entity/Component/CameraComponent.h"
+#include "Entity/Component/InputComponent.h"
+#include "Entity/Component/PlayerInputComponent.h"
+#include "Entity/Actor/Player.h"
+#include "Entity/Actor/NPC.h"
+#include <filesystem>
 
 Game::Game()
 {
@@ -16,7 +17,7 @@ Game::Game()
 
     // setup window
     data->window = sf::RenderWindow(sf::VideoMode({ 1920u, 1080u }), "CMake SFML Project");
-    data->window.setFramerateLimit(144);
+    data->window.setFramerateLimit(60);
 
     // register components
     data->componentManager.registerComponent<SpriteComponent>();
@@ -26,7 +27,8 @@ Game::Game()
     data->componentManager.registerComponent<PlayerInputComponent>();
 
     // load textures
-    data->assetManager.LoadTexture("E:/projects/ECS/GameEngine/Textures/Player.png", "player_texture");
+    std::string path = std::filesystem::current_path().parent_path().generic_string() + "/Textures/Player.png";
+    data->assetManager.LoadTexture(path, "player_texture");
 }
 
 void Game::processEvents()
@@ -54,6 +56,13 @@ void Game::run()
     player->setPosition(0.f, 0.f);
     data->entities.push_back(npc->GetEntityId());
     data->entities.push_back(player->GetEntityId());
+
+    for (int i = 0; i < 10000; i++)
+    {
+        std::shared_ptr<NPC> npc = std::make_shared<NPC>(data);
+        npc->setPosition(0.f + (i * 400), 0.f);
+        data->entities.push_back(npc->GetEntityId());
+    }
 
     // start the game loop
     while (data->window.isOpen())

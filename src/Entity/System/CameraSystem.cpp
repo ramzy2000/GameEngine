@@ -1,7 +1,7 @@
 #include "CameraSystem.h"
-#include "../Component/CameraComponent.h"
-#include "../Component/SpriteComponent.h"
-#include "../../Game/GameData.h"
+#include "Entity/Component/CameraComponent.h"
+#include "Entity/Component/SpriteComponent.h"
+#include "Game/GameData.h"
 
 void CameraSystem::update(ComponentManager& componentManager, std::vector<Entity> entities, sf::Time deltaTime)
 {

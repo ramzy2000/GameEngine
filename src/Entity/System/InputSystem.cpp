@@ -1,7 +1,7 @@
 #include "InputSystem.h"
-#include "../Component/InputComponent.h"
-#include "../Component/PlayerInputComponent.h"
-#include "../Action/Action.h"
+#include "Entity/Component/InputComponent.h"
+#include "Entity/Component/PlayerInputComponent.h"
+#include "Entity/Action/Action.h"
 #include <SFML/Graphics.hpp>
 
 void InputSystem::update(ComponentManager& componentManager, std::vector<Entity> entities, sf::Time deltaTime)

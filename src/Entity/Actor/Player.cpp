@@ -1,7 +1,7 @@
 #include "Player.h"
 
-#include "../Component/PlayerInputComponent.h"
-#include "../Component/CameraComponent.h"
+#include "Entity/Component/PlayerInputComponent.h"
+#include "Entity/Component/CameraComponent.h"
 
 Player::Player(std::shared_ptr<GameData> gameData) : Pawn(gameData)
 {
