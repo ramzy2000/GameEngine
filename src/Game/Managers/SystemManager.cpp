@@ -3,8 +3,8 @@
 #include "Entity/Component/CameraComponent.h"
 #include "Entity/Component/SpriteComponent.h"
 #include "Entity/Component/DepthComponent.h"
-
 #include "Game/GameData.h"
+
 
 SystemManager::SystemManager()
 {
