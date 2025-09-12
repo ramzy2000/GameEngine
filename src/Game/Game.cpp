@@ -6,6 +6,7 @@
 #include "Entity/Component/CameraComponent.h"
 #include "Entity/Component/InputComponent.h"
 #include "Entity/Component/PlayerInputComponent.h"
+#include "Entity/Component/DepthComponent.h"
 #include "Entity/Actor/Player.h"
 #include "Entity/Actor/NPC.h"
 #include "Entity/Actor/BackgroundImage.h"
@@ -27,6 +28,7 @@ Game::Game()
     GameData::instance().componentManager.registerComponent<CameraComponent>();
     GameData::instance().componentManager.registerComponent<InputComponent>();
     GameData::instance().componentManager.registerComponent<PlayerInputComponent>();
+    GameData::instance().componentManager.registerComponent<DepthComponent>();
 
     // load textures
     std::string path = std::filesystem::current_path().parent_path().generic_string() + "/Textures/Player.png";
@@ -67,7 +69,7 @@ void Game::run()
     npc->setPosition(0.f, 0.f);
     GameData::instance().entities.push_back(npc->GetEntityId());
 
-    
+    // sort order of entites based on draw order
 
     
 

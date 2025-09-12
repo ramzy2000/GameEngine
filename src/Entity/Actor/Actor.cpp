@@ -3,6 +3,7 @@
 #include "Entity/Component/InputComponent.h"
 #include "Entity/Component/PlayerInputComponent.h"
 #include "Entity/Component/VelocityComponent.h"
+#include "Entity/Component/DepthComponent.h"
 #include "Game/GameData.h"
 
 void Actor::generateId()
@@ -20,6 +21,7 @@ Actor::Actor()
 	GameData::instance().componentManager.addComponent<SpriteComponent>(entity_id, SpriteComponent());
 	SpriteComponent& spriteComponent = GameData::instance().componentManager.getComponent<SpriteComponent>(this->entity_id);
 	spriteComponent.SetTexture(GameData::instance().assetManager.GetTexture("player_texture"));
+	GameData::instance().componentManager.addComponent<DepthComponent>(entity_id, DepthComponent());
 }
 
 Actor::~Actor()
