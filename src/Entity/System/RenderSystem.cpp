@@ -7,6 +7,9 @@ void RenderSystem::update(ComponentManager& componentManager, std::vector<Entity
 {
 	for (Entity entity : entities)
 	{
-		componentManager.getComponent<SpriteComponent>(entity).Draw(GameData::getRenderWindow());
+		if (componentManager.hasComponent<SpriteComponent>(entity))
+		{
+			componentManager.getComponent<SpriteComponent>(entity).Draw(GameData::getRenderWindow());
+		}
 	}
 }

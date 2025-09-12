@@ -4,14 +4,15 @@
 #include "Component.h"
 
 #include <SFML/Graphics.hpp>
+#include <memory>
 
 class SpriteComponent : public Component
 {
 	std::optional<sf::Sprite> sprite;
-	sf::Texture texture;
 public:
 	SpriteComponent();
-	void SetTexture(const char* filePath);
+	~SpriteComponent();
+	void SetTexture(sf::Texture& texture);
 	const sf::Texture& GetTexture();
 	void Move(sf::Vector2f offset);
 	void Draw(sf::RenderWindow& window);

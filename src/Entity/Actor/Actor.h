@@ -16,9 +16,14 @@ public:
 	
 	Actor(std::shared_ptr<GameData> gameData);
 
-	~Actor();
+	virtual ~Actor();
+
+	void setPosition(const sf::Vector2f& position);
+	void setPosition(const float& x, const float& y);
 
 	Entity GetEntityId() const;
+
+	const sf::Vector2f& GetPosition() const;
 };
 
 #endif // !ACTORY_H

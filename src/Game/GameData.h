@@ -4,6 +4,7 @@
 #include <stack>
 #include "../Entity/System/SystemManager.h"
 #include "../Entity/Component/ComponentManager.h"
+#include "../Game/AssetManager.h"
 #include "../Game/EntityManager.h"
 
 class GameData
@@ -11,7 +12,7 @@ class GameData
 public:
 	ComponentManager componentManager;
 	EntityManager entityManager;
-
+	AssetManager assetManager;
 	std::shared_ptr<SystemManager> systemManager;
 	static sf::RenderWindow window;
 	//std::stack <std::shared_ptr<Level>> levels;

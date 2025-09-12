@@ -5,7 +5,7 @@
 
 class VelocityComponent
 {
-	float velocity = 800.0f;
+	float velocity = 1000.0f;
 public:
 	const float& GetVelocity();
 

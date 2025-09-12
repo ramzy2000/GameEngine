@@ -3,6 +3,7 @@
 #include "../Component/InputComponent.h"
 #include "../Component/PlayerInputComponent.h"
 #include "../Component/VelocityComponent.h"
+#include <iostream>
 
 Pawn::Pawn(std::shared_ptr<GameData> gameData) : Actor(gameData)
 {

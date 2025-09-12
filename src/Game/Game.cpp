@@ -7,6 +7,7 @@
 #include "../Entity//Component/InputComponent.h"
 #include "../Entity//Component/PlayerInputComponent.h"
 #include "../Entity/Actor/Player.h"
+#include "../Entity/Actor/NPC.h"
 
 Game::Game()
 {
@@ -24,9 +25,8 @@ Game::Game()
     data->componentManager.registerComponent<InputComponent>();
     data->componentManager.registerComponent<PlayerInputComponent>();
 
-    Player player(data);
-
-    data->entities.push_back(player.GetEntityId());
+    // load textures
+    data->assetManager.LoadTexture("E:/projects/ECS/GameEngine/Textures/Player.png", "player_texture");
 }
 
 void Game::processEvents()
@@ -42,12 +42,18 @@ void Game::processEvents()
 
 void Game::update(sf::Time deltaTime)
 {
-    // get the list of all entities on the top loaded level
     data->systemManager->Update(deltaTime);
 }
 
 void Game::run()
 {
+    // load entities
+    std::shared_ptr<Player> player = std::make_shared<Player>(data);
+    std::shared_ptr<NPC> npc = std::make_shared<NPC>(data);
+    npc->setPosition(0.f, 0.f);
+    player->setPosition(0.f, 0.f);
+    data->entities.push_back(npc->GetEntityId());
+    data->entities.push_back(player->GetEntityId());
 
     // start the game loop
     while (data->window.isOpen())

@@ -5,25 +5,27 @@ SpriteComponent::SpriteComponent()
 	
 }
 
-void SpriteComponent::SetTexture(const char* filePath)
+SpriteComponent::~SpriteComponent()
 {
-	if (this->texture.loadFromFile(filePath))
-	{
-		sprite.emplace(this->texture);
-		sprite->setOrigin(sf::Vector2f({ 0.0f, 0.0f }));
-		sprite->setScale(sf::Vector2f({ 1.0f, 1.0f }));
-		sprite->setColor(sf::Color(255, 255, 255, 255)); // Full opacity
-	}
+	sprite.reset();
+}
+
+void SpriteComponent::SetTexture(sf::Texture& texture)
+{
+	sprite.emplace(texture);
+	sprite->setOrigin(sf::Vector2f({ 0.0f, 0.0f }));
+	sprite->setScale(sf::Vector2f({ 1.0f, 1.0f }));
+	sprite->setColor(sf::Color(255, 255, 255, 255)); // Full opacity
 }
 
 const sf::Texture& SpriteComponent::GetTexture()
 {
-	return texture;
+	return sprite->getTexture();
 }
 
 void SpriteComponent::Move(sf::Vector2f offset)
 {
-	if (sprite.has_value())
+	if (sprite)
 	{
 		sprite->move(offset);
 	}
@@ -31,16 +33,16 @@ void SpriteComponent::Move(sf::Vector2f offset)
 
 void SpriteComponent::Draw(sf::RenderWindow& window)
 {
-	if (sprite.has_value())
+	if (sprite)
 	{
-		window.draw(sprite.value());
+		window.draw(*sprite);
 	}
 }
 
 const sf::Vector2f& SpriteComponent::GetPosition()
 {
 	// TODO: insert return statement here
-	if (sprite.has_value())
+	if (sprite)
 	{
 		return sprite->getPosition();
 	}
@@ -49,7 +51,7 @@ const sf::Vector2f& SpriteComponent::GetPosition()
 
 void SpriteComponent::SetPosition(const sf::Vector2f& position)
 {
-	if (sprite.has_value())
+	if (sprite)
 	{
 		sprite->setPosition(position);
 	}

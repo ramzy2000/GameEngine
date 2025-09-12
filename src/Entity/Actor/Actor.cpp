@@ -19,7 +19,7 @@ Actor::Actor(std::shared_ptr<GameData> gameData)
 	// give the actor a sprite component
 	gameData->componentManager.addComponent<SpriteComponent>(entity_id, SpriteComponent());
 	SpriteComponent& spriteComponent = gameData->componentManager.getComponent<SpriteComponent>(this->entity_id);
-	spriteComponent.SetTexture("../Textures/Player.png");
+	spriteComponent.SetTexture(this->gameData->assetManager.GetTexture("player_texture"));
 }
 
 Actor::~Actor()
@@ -28,7 +28,25 @@ Actor::~Actor()
 	gameData->componentManager.removeAllComponents(entity_id);
 }
 
+void Actor::setPosition(const sf::Vector2f& position)
+{
+	SpriteComponent& spriteComponent = gameData->componentManager.getComponent<SpriteComponent>(GetEntityId());
+	spriteComponent.SetPosition(position);
+}
+
+void Actor::setPosition(const float& x, const float& y)
+{
+	SpriteComponent& spriteComponent = gameData->componentManager.getComponent<SpriteComponent>(GetEntityId());
+	spriteComponent.SetPosition(sf::Vector2f({x,y}));
+}
+
 Entity Actor::GetEntityId() const
 {
 	return entity_id;
+}
+
+const sf::Vector2f& Actor::GetPosition() const
+{
+	SpriteComponent& spriteComponent = gameData->componentManager.getComponent<SpriteComponent>(GetEntityId());
+	return spriteComponent.GetPosition();
 }
