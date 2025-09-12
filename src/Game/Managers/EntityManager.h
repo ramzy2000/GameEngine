@@ -2,7 +2,7 @@
 #define ENTITY_MANAGER_H
 
 #include "Entity/Entity.h"
-#include "Entity/Component/ComponentManager.h"
+#include "Game/Managers/ComponentManager.h"
 #include <vector>
 
 class EntityManager

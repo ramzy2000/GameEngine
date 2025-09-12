@@ -1,7 +1,7 @@
 #ifndef SYSTEM_MANAGER_H
 #define SYSTEM_MANAGER_H
 
-#include "System.h"
+#include "Entity/System/System.h"
 #include "Entity/Entity.h"
 #include "Entity/System/InputSystem.h"
 #include "Entity/System/RenderSystem.h"

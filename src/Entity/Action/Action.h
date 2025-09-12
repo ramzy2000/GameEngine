@@ -3,7 +3,7 @@
 #include "Entity/Entity.h"
 #include <memory>
 #include <SFML/Graphics.hpp>
-#include "Entity/Component/ComponentManager.h"
+#include "Game/Managers/ComponentManager.h"
 
 class Action
 {

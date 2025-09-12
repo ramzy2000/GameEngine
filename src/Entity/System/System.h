@@ -4,7 +4,7 @@
 #include "Entity/Entity.h"
 #include <SFML/Graphics.hpp>
 
-#include "Entity/Component/ComponentManager.h"
+#include "Game/Managers/ComponentManager.h"
 
 class System
 {

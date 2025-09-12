@@ -2,10 +2,10 @@
 #define GAME_DATE_H
 #include "Entity/System/InputSystem.h"
 #include <stack>
-#include "Entity/System/SystemManager.h"
-#include "Entity/Component/ComponentManager.h"
-#include "Game/AssetManager.h"
-#include "Game/EntityManager.h"
+#include "Game/Managers/SystemManager.h"
+#include "Game/Managers/ComponentManager.h"
+#include "Game/Managers/AssetManager.h"
+#include "Game/Managers/EntityManager.h"
 
 class GameData
 {

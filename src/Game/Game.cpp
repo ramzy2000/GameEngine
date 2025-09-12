@@ -1,6 +1,6 @@
 #include "Game.h"
 #include <iostream>
-#include "Entity/System/SystemManager.h"
+#include "Game/Managers/SystemManager.h"
 #include "Entity/Component/SpriteComponent.h"
 #include "Entity/Component/VelocityComponent.h"
 #include "Entity/Component/CameraComponent.h"
