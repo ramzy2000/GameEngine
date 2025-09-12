@@ -10,11 +10,9 @@ private:
 	Entity entity_id;
 
 	void generateId();
-protected:
-	std::shared_ptr<GameData> gameData;
 public:
 	
-	Actor(std::shared_ptr<GameData> gameData);
+	Actor();
 
 	virtual ~Actor();
 

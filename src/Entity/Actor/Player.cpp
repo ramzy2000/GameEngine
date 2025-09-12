@@ -2,9 +2,10 @@
 
 #include "Entity/Component/PlayerInputComponent.h"
 #include "Entity/Component/CameraComponent.h"
+#include "Game/GameData.h"
 
-Player::Player(std::shared_ptr<GameData> gameData) : Pawn(gameData)
+Player::Player() : Pawn()
 {
-	gameData->componentManager.addComponent<PlayerInputComponent>(GetEntityId(), PlayerInputComponent());
-	gameData->componentManager.addComponent<CameraComponent>(GetEntityId(), CameraComponent());
+	GameData::instance().componentManager.addComponent<PlayerInputComponent>(GetEntityId(), PlayerInputComponent());
+	GameData::instance().componentManager.addComponent<CameraComponent>(GetEntityId(), CameraComponent());
 }

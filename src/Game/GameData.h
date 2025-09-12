@@ -9,6 +9,9 @@
 
 class GameData
 {
+private:
+	GameData() = default;
+	~GameData() = default;
 public:
 	ComponentManager componentManager;
 	EntityManager entityManager;
@@ -19,6 +22,14 @@ public:
 	std::vector<Entity> entities;
 	bool isAdding = false;
 	bool isRemoveing = false;
+
+	GameData(const GameData&) = delete;
+	GameData& operator=(const GameData&) = delete;
+
+	static GameData& instance() {
+		static GameData instance;
+		return instance;
+	}
 
 	static sf::RenderWindow& getRenderWindow();
 };

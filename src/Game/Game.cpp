@@ -9,66 +9,67 @@
 #include "Entity/Actor/Player.h"
 #include "Entity/Actor/NPC.h"
 #include <filesystem>
+#include "Game/GameData.h"
 
 Game::Game()
 {
-    data = std::make_shared<GameData>(); // Create game data object
-    data->systemManager = std::make_shared<SystemManager>(data); // Create System Manager
+    // Create game data object
+    GameData::instance().systemManager = std::make_shared<SystemManager>(); // Create System Manager
 
     // setup window
-    data->window = sf::RenderWindow(sf::VideoMode({ 1920u, 1080u }), "CMake SFML Project");
-    data->window.setFramerateLimit(60);
+    GameData::instance().window = sf::RenderWindow(sf::VideoMode({ 1920u, 1080u }), "CMake SFML Project");
+    GameData::instance().window.setFramerateLimit(60);
 
     // register components
-    data->componentManager.registerComponent<SpriteComponent>();
-    data->componentManager.registerComponent<VelocityComponent>();
-    data->componentManager.registerComponent<CameraComponent>();
-    data->componentManager.registerComponent<InputComponent>();
-    data->componentManager.registerComponent<PlayerInputComponent>();
+    GameData::instance().componentManager.registerComponent<SpriteComponent>();
+    GameData::instance().componentManager.registerComponent<VelocityComponent>();
+    GameData::instance().componentManager.registerComponent<CameraComponent>();
+    GameData::instance().componentManager.registerComponent<InputComponent>();
+    GameData::instance().componentManager.registerComponent<PlayerInputComponent>();
 
     // load textures
     std::string path = std::filesystem::current_path().parent_path().generic_string() + "/Textures/Player.png";
-    data->assetManager.LoadTexture(path, "player_texture");
+    GameData::instance().assetManager.LoadTexture(path, "player_texture");
 }
 
 void Game::processEvents()
 {
-    while (const std::optional event = data->window.pollEvent())
+    while (const std::optional event = GameData::instance().window.pollEvent())
     {
         if (event->is<sf::Event::Closed>())
         {
-            data->window.close();
+            GameData::instance().window.close();
         }
     }
 }
 
 void Game::update(sf::Time deltaTime)
 {
-    data->systemManager->Update(deltaTime);
+    GameData::instance().systemManager->Update(deltaTime);
 }
 
 void Game::run()
 {
     // load entities
-    std::shared_ptr<Player> player = std::make_shared<Player>(data);
+    std::shared_ptr<Player> player = std::make_shared<Player>();
     player->setPosition(0.f, 0.f);
-    data->entities.push_back(player->GetEntityId());
+    GameData::instance().entities.push_back(player->GetEntityId());
 
-    std::shared_ptr<NPC> npc = std::make_shared<NPC>(data);
+    std::shared_ptr<NPC> npc = std::make_shared<NPC>();
     npc->setPosition(0.f, 0.f);
-    data->entities.push_back(npc->GetEntityId());
+    GameData::instance().entities.push_back(npc->GetEntityId());
 
     // start the game loop
-    while (data->window.isOpen())
+    while (GameData::instance().window.isOpen())
     {
         processEvents();
 
         dt = deltaClock.restart();
 
-        data->window.clear();
+        GameData::instance().window.clear();
 
         update(dt);
         
-        data->window.display();
+        GameData::instance().window.display();
     }
 }

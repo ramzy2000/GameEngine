@@ -25,9 +25,8 @@ class SystemManager
     InputSystem inputSystem;
     RenderSystem renderSystem;
     CameraSystem cameraSystem;
-    std::shared_ptr<GameData> gameData;
 public:
-    SystemManager(std::shared_ptr<GameData> gameData);
+    SystemManager();
     void Update(sf::Time deltaTime);
 };
 

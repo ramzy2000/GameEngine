@@ -6,7 +6,7 @@
 class NPC : public Pawn
 {
 public:
-	NPC(std::shared_ptr<GameData> gameData);
+	NPC();
 };
 
 #endif //!NPC_H

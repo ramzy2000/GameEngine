@@ -23,8 +23,6 @@ private:
 
 	sf::Clock deltaClock;
 	sf::Time dt;
-
-	std::shared_ptr<GameData> data;
 };
 
 #endif //!GAME_H

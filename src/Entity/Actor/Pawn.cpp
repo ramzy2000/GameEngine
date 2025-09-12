@@ -3,9 +3,10 @@
 #include "Entity/Component/InputComponent.h"
 #include "Entity/Component/PlayerInputComponent.h"
 #include "Entity/Component/VelocityComponent.h"
+#include "Game/GameData.h"
 #include <iostream>
 
-Pawn::Pawn(std::shared_ptr<GameData> gameData) : Actor(gameData)
+Pawn::Pawn() : Actor()
 {
-	gameData->componentManager.addComponent<VelocityComponent>(GetEntityId(), VelocityComponent());
+	GameData::instance().componentManager.addComponent<VelocityComponent>(GetEntityId(), VelocityComponent());
 }

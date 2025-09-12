@@ -6,7 +6,7 @@
 class Player : public Pawn
 {
 public:
-	Player(std::shared_ptr<GameData> gameData);
+	Player();
 };
 
 #endif //!PLAYER_H

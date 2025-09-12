@@ -5,16 +5,15 @@
 
 #include "Game/GameData.h"
 
-SystemManager::SystemManager(std::shared_ptr<GameData> gameData)
+SystemManager::SystemManager()
 {
-	this->gameData = gameData;
+	
 }
 
 void SystemManager::Update(sf::Time deltaTime)
 {
     // update all systems for this entity
-	
-	inputSystem.update(gameData->componentManager, gameData->componentManager.GetEntities<PlayerInputComponent>(), deltaTime);
-	cameraSystem.update(gameData->componentManager, gameData->componentManager.GetEntities<CameraComponent>(), deltaTime);
-	renderSystem.update(gameData->componentManager, gameData->componentManager.GetEntities<SpriteComponent>(), deltaTime);
+	inputSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<PlayerInputComponent>(), deltaTime);
+	cameraSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<CameraComponent>(), deltaTime);
+	renderSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<SpriteComponent>(), deltaTime);
 }
