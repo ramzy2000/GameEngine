@@ -8,16 +8,13 @@ void InputSystem::update(ComponentManager& componentManager, std::vector<Entity>
 {
 	for (auto& entity : entities)
 	{
-		if (componentManager.hasComponent<PlayerInputComponent>(entity))
+		PlayerInputComponent& inputComponent = componentManager.getComponent<PlayerInputComponent>(entity);
+		auto actions = inputComponent.HandleInput();
+		for (std::shared_ptr<Action> action : actions)
 		{
-			PlayerInputComponent& inputComponent = componentManager.getComponent<PlayerInputComponent>(entity);
-			auto actions = inputComponent.HandleInput();
-			for (std::shared_ptr<Action> action : actions)
+			if (action)
 			{
-				if (action)
-				{
-					action->perform(componentManager, entity, deltaTime);
-				}
+				action->perform(componentManager, entity, deltaTime);
 			}
 		}
 	}

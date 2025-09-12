@@ -51,18 +51,12 @@ void Game::run()
 {
     // load entities
     std::shared_ptr<Player> player = std::make_shared<Player>(data);
-    std::shared_ptr<NPC> npc = std::make_shared<NPC>(data);
-    npc->setPosition(0.f, 0.f);
     player->setPosition(0.f, 0.f);
-    data->entities.push_back(npc->GetEntityId());
     data->entities.push_back(player->GetEntityId());
 
-    for (int i = 0; i < 10000; i++)
-    {
-        std::shared_ptr<NPC> npc = std::make_shared<NPC>(data);
-        npc->setPosition(0.f + (i * 400), 0.f);
-        data->entities.push_back(npc->GetEntityId());
-    }
+    std::shared_ptr<NPC> npc = std::make_shared<NPC>(data);
+    npc->setPosition(0.f, 0.f);
+    data->entities.push_back(npc->GetEntityId());
 
     // start the game loop
     while (data->window.isOpen())
