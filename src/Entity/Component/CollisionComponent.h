@@ -1,21 +1,22 @@
 #ifndef COLLISION_COMPOENT_H
 #define COLLISION_COMPOENT_H
 #include <SFML/Graphics.hpp>
+#include <box2d/box2d.h>
 
 class SpriteComponent;
+
+enum class ColliderShape { Box, Circle };
 
 #include "Component.h"
 class CollisionComponent : public Component
 {
-	sf::FloatRect bounds;
 public:
-	CollisionComponent();
-
-	bool checkCollision(const CollisionComponent& other) const;
-
-	void updateBounds(SpriteComponent& spriteComponent);
-
-	const sf::FloatRect& getBounds() const;
+    ColliderShape shape = ColliderShape::Box;
+    b2Vec2 size = { 1.0f, 1.0f }; // For box
+    float radius = 0.5f;        // For circle
+    float density = 1.0f;
+    float friction = 0.3f;
+    bool isSensor = false;
 };
 
 #endif //!COLLISION_COMPOENT_H
