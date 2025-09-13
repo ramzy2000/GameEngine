@@ -8,8 +8,6 @@ class EntityBase
 {
 private:
 	Entity entity_id;
-
-	void generateId();
 public:
 	EntityBase();
 
