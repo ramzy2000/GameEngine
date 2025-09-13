@@ -13,7 +13,7 @@ SpriteComponent::~SpriteComponent()
 void SpriteComponent::SetTexture(sf::Texture& texture)
 {
 	sprite.emplace(texture);
-	sprite->setOrigin(sf::Vector2f({ 0.0f, 0.0f }));
+	sprite->setOrigin(sf::Vector2f({ texture.getSize().x / 2.0f, texture.getSize().y / 2.0f }));
 	sprite->setScale(sf::Vector2f({ 1.0f, 1.0f }));
 	sprite->setColor(sf::Color(255, 255, 255, 255)); // Full opacity
 }

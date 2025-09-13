@@ -9,6 +9,7 @@
 #include "Entity/Component/DepthComponent.h"
 #include "Entity/Component/RigidBodyComponent.h"
 #include "Entity/Component/CollisionComponent.h"
+#include "Entity/Component/TransformComponent.h"
 #include "Entity/Actor/Player.h"
 #include "Entity/Actor/NPC.h"
 #include "Entity/Actor/BackgroundImage.h"
@@ -25,14 +26,15 @@ Game::Game()
     GameData::instance().window.setFramerateLimit(60);
 
     // register components
-    GameData::instance().componentManager.registerComponent<SpriteComponent>();
-    GameData::instance().componentManager.registerComponent<VelocityComponent>();
-    GameData::instance().componentManager.registerComponent<CameraComponent>();
-    GameData::instance().componentManager.registerComponent<InputComponent>();
-    GameData::instance().componentManager.registerComponent<PlayerInputComponent>();
-    GameData::instance().componentManager.registerComponent<DepthComponent>();
-    GameData::instance().componentManager.registerComponent<CollisionComponent>();
-    GameData::instance().componentManager.registerComponent<RigidBodyComponent>();
+    RegisterComponent<SpriteComponent>();
+    RegisterComponent<VelocityComponent>();
+    RegisterComponent<CameraComponent>();
+    RegisterComponent<InputComponent>();
+    RegisterComponent<PlayerInputComponent>();
+    RegisterComponent<DepthComponent>();
+    RegisterComponent<CollisionComponent>();
+    RegisterComponent<RigidBodyComponent>();
+    RegisterComponent<TransformComponent>();
 
     // load textures
     std::string path = std::filesystem::current_path().parent_path().generic_string() + "/Textures/Player.png";
@@ -69,7 +71,7 @@ void Game::run()
     GameData::instance().entities.push_back(player->GetEntityId());
 
     std::shared_ptr<NPC> npc = std::make_shared<NPC>();
-    npc->setPosition(0.f, 0.f);
+    npc->setPosition(300.f, 0.f);
     GameData::instance().entities.push_back(npc->GetEntityId());
     
     // start the game loop

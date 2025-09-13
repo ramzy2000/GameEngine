@@ -18,6 +18,13 @@ private:
 	void processEvents();
 	void update(sf::Time deltaTime);
 
+	template<typename T>
+	void RegisterComponent()
+	{
+		GameData::instance().componentManager.registerComponent<T>();
+	}
+
+
 	sf::Texture backgroundTexture;
 	std::optional<sf::Sprite> backgroundSprite;
 

@@ -8,8 +8,9 @@
 
 class SpriteComponent : public Component
 {
-	std::optional<sf::Sprite> sprite;
+	
 public:
+	std::optional<sf::Sprite> sprite;
 	SpriteComponent();
 	~SpriteComponent();
 	void SetTexture(sf::Texture& texture);

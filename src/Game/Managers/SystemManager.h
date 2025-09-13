@@ -6,6 +6,7 @@
 #include "Entity/System/InputSystem.h"
 #include "Entity/System/RenderSystem.h"
 #include "Entity/System/CameraSystem.h"
+#include "Entity/System/PhysicsSystem.h"
 #include <array>
 #include <vector>
 
@@ -22,10 +23,12 @@ static const unsigned int MAX_SYSTEMS = 10;
 
 class SystemManager
 {
+public:
     InputSystem inputSystem;
     RenderSystem renderSystem;
     CameraSystem cameraSystem;
-public:
+    PhysicsSystem physicsSystem;
+
     SystemManager();
     void Update(sf::Time deltaTime);
 };

@@ -7,7 +7,7 @@
 class CameraComponent : public Component
 {
 	sf::View view;
-	sf::Vector2f offset = { 270.f, 250.f };
+	sf::Vector2f offset = { 0.f, 0.f };
 public:
 	CameraComponent();
 
