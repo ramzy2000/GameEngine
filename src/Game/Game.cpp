@@ -41,6 +41,8 @@ Game::Game()
     GameData::instance().assetManager.LoadTexture(path, "player_texture");
     std::string path2 = std::filesystem::current_path().parent_path().generic_string() + "/Textures/background.jpg";
     GameData::instance().assetManager.LoadTexture(path2, "background_texture");
+    std::string path3 = std::filesystem::current_path().parent_path().generic_string() + "/Textures/wood_floor.png";
+    GameData::instance().assetManager.LoadTexture(path3, "wood_floor_texture");
 }
 
 void Game::processEvents()
