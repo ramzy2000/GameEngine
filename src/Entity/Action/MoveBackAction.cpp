@@ -11,7 +11,16 @@ void MoveBackAction::perform(ComponentManager& componentManager, Entity entity, 
 	{
 		TransformComponent& transformComponent = componentManager.getComponent<TransformComponent>(entity);
 		VelocityComponent& velocityComponent = componentManager.getComponent<VelocityComponent>(entity);
+		
+		if (componentManager.hasComponent<RigidBodyComponent>(entity))
+		{
+			RigidBodyComponent& rigidBodyComponent = componentManager.getComponent<RigidBodyComponent>(entity);
 
-		transformComponent.position.y = transformComponent.position.y + ((velocityComponent.GetVelocity()) * deltaTime.asSeconds());
+			// move the rigid body
+			if (rigidBodyComponent.body)
+			{
+				rigidBodyComponent.body->ApplyLinearImpulse(b2Vec2({ 0.0f, -velocityComponent.GetVelocity() / 10000 }), rigidBodyComponent.body->GetWorldCenter(), true);
+			}
+		}
 	}
 }

@@ -8,7 +8,6 @@
 class Actor : public EntityBase
 {
 public:
-	
 	Actor();
 
 	void setPosition(const sf::Vector2f& position);

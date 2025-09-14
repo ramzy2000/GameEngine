@@ -2,6 +2,7 @@
 #include "Entity/Component/SpriteComponent.h"
 #include "Entity/Component/VelocityComponent.h"
 #include "Entity/Component/TransformComponent.h"
+#include "Entity/Component/RigidBodyComponent.h"
 #include <iostream>
 
 void MoveForwardAction::perform(ComponentManager& componentManager, Entity entity, sf::Time deltaTime)
@@ -11,6 +12,15 @@ void MoveForwardAction::perform(ComponentManager& componentManager, Entity entit
 		TransformComponent& transformComponent = componentManager.getComponent<TransformComponent>(entity);
 		VelocityComponent& velocityComponent = componentManager.getComponent<VelocityComponent>(entity);
 
-		transformComponent.position.y = transformComponent.position.y + ((-velocityComponent.GetVelocity()) * deltaTime.asSeconds());
+		if (componentManager.hasComponent<RigidBodyComponent>(entity))
+		{
+			RigidBodyComponent& rigidBodyComponent = componentManager.getComponent<RigidBodyComponent>(entity);
+
+			// move the rigid body
+			if (rigidBodyComponent.body)
+			{
+				rigidBodyComponent.body->ApplyLinearImpulse(b2Vec2({ 0.0f, velocityComponent.GetVelocity() / 10000 }), rigidBodyComponent.body->GetWorldCenter(), true);
+			}
+		}
 	}
 }

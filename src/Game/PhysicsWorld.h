@@ -7,7 +7,7 @@ class PhysicsWorld
 {
 public:
 public:
-    PhysicsWorld() : world(b2Vec2(0.0f, -9.8f)) {}
+    PhysicsWorld() : world(b2Vec2(0.0f, 0.0f)) {}
     void Step(float dt) { world.Step(dt, 8, 3); }
     b2World& GetWorld() { return world; }
 

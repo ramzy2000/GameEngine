@@ -10,25 +10,19 @@ constexpr float PIXELS_PER_METER = 100.0f;
 void PhysicsSystem::update(ComponentManager& componentManager, std::vector<Entity> entities, sf::Time deltaTime)
 {
 	physicsWorld.Step(deltaTime.asSeconds());
-    //physicsWorld.GetWorld().SetGravity({0.0f, 0.0f});
 
 	for (Entity entity : entities)
 	{
         RigidBodyComponent& rigidBodyComponent = componentManager.getComponent<RigidBodyComponent>(entity);
         TransformComponent& transformComponent = componentManager.getComponent<TransformComponent>(entity);
 
-       
         if (rigidBodyComponent.body)
         {
-            // apply input transformation to the ridgid body component
-            rigidBodyComponent.body->SetTransform(b2Vec2({ transformComponent.position.x/ PIXELS_PER_METER, transformComponent.position.y/ PIXELS_PER_METER }), transformComponent.rotation * 180.f / b2_pi);
-
-
             // apply all physics
             b2Vec2 pos = rigidBodyComponent.body->GetPosition();
             float angle = rigidBodyComponent.body->GetAngle();
             transformComponent.position.x = pos.x * PIXELS_PER_METER;
-            transformComponent.position.y = pos.y * PIXELS_PER_METER;
+            transformComponent.position.y = (-1)*pos.y * PIXELS_PER_METER;
             transformComponent.rotation = angle * 180.f / b2_pi;
         }
 	}

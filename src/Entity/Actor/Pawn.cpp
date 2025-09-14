@@ -15,4 +15,7 @@ Pawn::Pawn() : Actor()
 	GameData::instance().componentManager.addComponent<RigidBodyComponent>(GetEntityId(), RigidBodyComponent());
 	GameData::instance().componentManager.addComponent<CollisionComponent>(GetEntityId(), CollisionComponent());
 	GameData::instance().systemManager->physicsSystem.createBody(GameData::instance().componentManager, GetEntityId());
+
+	RigidBodyComponent& rigidBodyComponent = GameData::instance().componentManager.getComponent<RigidBodyComponent>(GetEntityId());
+	rigidBodyComponent.body->SetLinearDamping(100.f);
 }

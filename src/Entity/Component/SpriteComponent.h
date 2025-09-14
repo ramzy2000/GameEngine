@@ -8,7 +8,6 @@
 
 class SpriteComponent : public Component
 {
-	
 public:
 	std::optional<sf::Sprite> sprite;
 	SpriteComponent();
