@@ -20,18 +20,18 @@ Actor::Actor()
 
 void Actor::setPosition(const sf::Vector2f& position)
 {
-	SpriteComponent& spriteComponent = GameData::instance().componentManager.getComponent<SpriteComponent>(GetEntityId());
-	spriteComponent.SetPosition(position);
+	TransformComponent& transformComponent = GameData::instance().componentManager.getComponent<TransformComponent>(GetEntityId());
+	transformComponent.position = position;
 }
 
 void Actor::setPosition(const float& x, const float& y)
 {
-	SpriteComponent& spriteComponent = GameData::instance().componentManager.getComponent<SpriteComponent>(GetEntityId());
-	spriteComponent.SetPosition(sf::Vector2f({x,y}));
+	TransformComponent& transformComponent = GameData::instance().componentManager.getComponent<TransformComponent>(GetEntityId());
+	transformComponent.position = sf::Vector2f({x, y});
 }
 
 const sf::Vector2f& Actor::GetPosition() const
 {
-	SpriteComponent& spriteComponent = GameData::instance().componentManager.getComponent<SpriteComponent>(GetEntityId());
-	return spriteComponent.GetPosition();
+	TransformComponent& transformComponent = GameData::instance().componentManager.getComponent<TransformComponent>(GetEntityId());
+	return transformComponent.position;
 }
