@@ -14,7 +14,7 @@ Actor::Actor()
 	GameData::instance().componentManager.addComponent<SpriteComponent>(GetEntityId(), SpriteComponent());
 	GameData::instance().componentManager.addComponent<TransformComponent>(GetEntityId(), TransformComponent());
 	SpriteComponent& spriteComponent = GameData::instance().componentManager.getComponent<SpriteComponent>(GetEntityId());
-	spriteComponent.SetTexture(GameData::instance().assetManager.GetTexture("player_texture"));
+	spriteComponent.SetTexture(GameData::instance().assetManager.GetTexture("assassin_texture"));
 	GameData::instance().componentManager.addComponent<DepthComponent>(GetEntityId(), DepthComponent());
 }
 

@@ -22,7 +22,7 @@ Game::Game()
     GameData::instance().systemManager = std::make_shared<SystemManager>(); // Create System Manager
 
     // setup window
-    GameData::instance().window = sf::RenderWindow(sf::VideoMode({ 1920u, 1080u }), "CMake SFML Project");
+    GameData::instance().window = sf::RenderWindow(sf::VideoMode({ 1920u, 1080u }), "2D Engine");
     GameData::instance().window.setFramerateLimit(60);
 
     // register components
@@ -39,10 +39,13 @@ Game::Game()
     // load textures
     std::string path = std::filesystem::current_path().parent_path().generic_string() + "/Textures/Player.png";
     GameData::instance().assetManager.LoadTexture(path, "player_texture");
-    std::string path2 = std::filesystem::current_path().parent_path().generic_string() + "/Textures/background.jpg";
+    std::string path2 = std::filesystem::current_path().parent_path().generic_string() + "/Textures/background_textures.png";
     GameData::instance().assetManager.LoadTexture(path2, "background_texture");
     std::string path3 = std::filesystem::current_path().parent_path().generic_string() + "/Textures/wood_floor.png";
     GameData::instance().assetManager.LoadTexture(path3, "wood_floor_texture");
+    
+    std::string path4 = std::filesystem::current_path().parent_path().generic_string() + "/Textures/Assassin.png";
+    GameData::instance().assetManager.LoadTexture(path4, "assassin_texture");
 }
 
 void Game::processEvents()
@@ -69,11 +72,11 @@ void Game::run()
 
     // load entities
     std::shared_ptr<Player> player = std::make_shared<Player>();
-    player->setPosition(0.f, 0.f);
+    player->setPosition(0.f, 100.f);
     GameData::instance().entities.push_back(player->GetEntityId());
 
     std::shared_ptr<NPC> npc = std::make_shared<NPC>();
-    npc->setPosition(300.f, 0.f);
+    npc->setPosition(0.0f, 0.f);
     GameData::instance().entities.push_back(npc->GetEntityId());
     
     // start the game loop

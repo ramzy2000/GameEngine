@@ -23,7 +23,8 @@ void PhysicsSystem::update(ComponentManager& componentManager, std::vector<Entit
             // apply input transformation to the ridgid body component
             rigidBodyComponent.body->SetTransform(b2Vec2({ transformComponent.position.x/ PIXELS_PER_METER, transformComponent.position.y/ PIXELS_PER_METER }), transformComponent.rotation * 180.f / b2_pi);
 
-            // apply normal physics
+
+            // apply all physics
             b2Vec2 pos = rigidBodyComponent.body->GetPosition();
             float angle = rigidBodyComponent.body->GetAngle();
             transformComponent.position.x = pos.x * PIXELS_PER_METER;
