@@ -1,14 +1,17 @@
 #include "MoveBackAction.h"
 #include "Entity/Component/SpriteComponent.h"
 #include "Entity/Component/VelocityComponent.h"
+#include "Entity/Component/TransformComponent.h"
+#include "Entity/Component/RigidBodyComponent.h"
 
 
 void MoveBackAction::perform(ComponentManager& componentManager, Entity entity, sf::Time deltaTime)
 {
-	if (componentManager.hasComponent<VelocityComponent>(entity) && componentManager.hasComponent<SpriteComponent>(entity))
+	if (componentManager.hasComponent<VelocityComponent>(entity) && componentManager.hasComponent<TransformComponent>(entity))
 	{
-		SpriteComponent& spriteComponent = componentManager.getComponent<SpriteComponent>(entity);
+		TransformComponent& transformComponent = componentManager.getComponent<TransformComponent>(entity);
 		VelocityComponent& velocityComponent = componentManager.getComponent<VelocityComponent>(entity);
-		spriteComponent.Move(sf::Vector2f({ 0.0f, velocityComponent.GetVelocity() * deltaTime.asSeconds() }));
+
+		transformComponent.position.y = transformComponent.position.y + ((velocityComponent.GetVelocity()) * deltaTime.asSeconds());
 	}
 }

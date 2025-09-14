@@ -13,7 +13,6 @@ Pawn::Pawn() : Actor()
 {
 	GameData::instance().componentManager.addComponent<VelocityComponent>(GetEntityId(), VelocityComponent());
 	GameData::instance().componentManager.addComponent<RigidBodyComponent>(GetEntityId(), RigidBodyComponent());
-	GameData::instance().componentManager.addComponent<TransformComponent>(GetEntityId(), TransformComponent());
 	GameData::instance().componentManager.addComponent<CollisionComponent>(GetEntityId(), CollisionComponent());
 	GameData::instance().systemManager->physicsSystem.createBody(GameData::instance().componentManager, GetEntityId());
 }

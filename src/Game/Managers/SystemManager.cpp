@@ -17,8 +17,8 @@ SystemManager::SystemManager()
 void SystemManager::Update(sf::Time deltaTime)
 {
     // update all systems for this entity
-	inputSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<PlayerInputComponent>(), deltaTime);
-	cameraSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<CameraComponent>(), deltaTime);
-	renderSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<SpriteComponent, DepthComponent, TransformComponent>(), deltaTime);
+	inputSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<PlayerInputComponent, TransformComponent>(), deltaTime);
 	physicsSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<RigidBodyComponent, CollisionComponent, TransformComponent>(), deltaTime);
+	cameraSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<CameraComponent, TransformComponent>(), deltaTime);
+	renderSystem.update(GameData::instance().componentManager, GameData::instance().componentManager.GetEntities<SpriteComponent, DepthComponent, TransformComponent>(), deltaTime);
 }

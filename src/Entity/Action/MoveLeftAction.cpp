@@ -1,13 +1,11 @@
 #include "MoveLeftAction.h"
 #include "Entity/Component/SpriteComponent.h"
 #include "Entity/Component/VelocityComponent.h"
+#include "Entity/Component/TransformComponent.h"
 
 void MoveLeftAction::perform(ComponentManager& componentManager, Entity entity, sf::Time deltaTime)
 {
-	if (componentManager.hasComponent<VelocityComponent>(entity) && componentManager.hasComponent<SpriteComponent>(entity))
-	{
-		SpriteComponent& spriteComponent = componentManager.getComponent<SpriteComponent>(entity);
-		VelocityComponent& velocityComponent = componentManager.getComponent<VelocityComponent>(entity);
-		spriteComponent.Move(sf::Vector2f({ -velocityComponent.GetVelocity() * deltaTime.asSeconds(), 0.0f }));
-	}
+	TransformComponent& transformComponent = componentManager.getComponent<TransformComponent>(entity);
+	VelocityComponent& velocityComponent = componentManager.getComponent<VelocityComponent>(entity);
+	transformComponent.position.x = transformComponent.position.x + ((-velocityComponent.GetVelocity()) * deltaTime.asSeconds());
 }
