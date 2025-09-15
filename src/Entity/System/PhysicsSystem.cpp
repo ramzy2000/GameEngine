@@ -23,7 +23,7 @@ void PhysicsSystem::update(ComponentManager& componentManager, std::vector<Entit
             float angle = rigidBodyComponent.body->GetAngle();
             transformComponent.position.x = pos.x * PIXELS_PER_METER;
             transformComponent.position.y = (-1)*pos.y * PIXELS_PER_METER;
-            transformComponent.rotation = angle * 180.f / b2_pi;
+            //transformComponent.rotation = angle * 180.f / b2_pi;
         }
 	}
 }
@@ -73,4 +73,12 @@ void PhysicsSystem::createBody(ComponentManager& componentManager, Entity entity
     }
 
     rigidBody.initialized = true;
+}
+
+void PhysicsSystem::destroyBody(ComponentManager& componentManager, Entity entity)
+{
+    RigidBodyComponent& rigidBody = componentManager.getComponent<RigidBodyComponent>(entity);
+
+    physicsWorld.GetWorld().DestroyBody(rigidBody.body);
+    rigidBody.body = nullptr;
 }

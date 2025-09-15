@@ -12,10 +12,10 @@ class CollisionComponent : public Component
 {
 public:
     ColliderShape shape = ColliderShape::Box;
-    b2Vec2 size = { 1.0f, 1.0f }; // For box
+    b2Vec2 size = { 100.0f, 100.0f }; // For box
     float radius = 0.5f;        // For circle
     float density = 1.0f;
-    float friction = 0.3f;
+    float friction = 1.3f;
     bool isSensor = false;
 };
 

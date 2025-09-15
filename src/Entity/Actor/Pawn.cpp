@@ -11,11 +11,7 @@
 
 Pawn::Pawn() : Actor()
 {
-	GameData::instance().componentManager.addComponent<VelocityComponent>(GetEntityId(), VelocityComponent());
-	GameData::instance().componentManager.addComponent<RigidBodyComponent>(GetEntityId(), RigidBodyComponent());
-	GameData::instance().componentManager.addComponent<CollisionComponent>(GetEntityId(), CollisionComponent());
-	GameData::instance().systemManager->physicsSystem.createBody(GameData::instance().componentManager, GetEntityId());
-
-	RigidBodyComponent& rigidBodyComponent = GameData::instance().componentManager.getComponent<RigidBodyComponent>(GetEntityId());
-	rigidBodyComponent.body->SetLinearDamping(100.f);
+	GameData::instance().componentManager.addComponent<SpriteComponent>(GetEntityId(), SpriteComponent());
+	SpriteComponent& spriteComponent = GameData::instance().componentManager.getComponent<SpriteComponent>(GetEntityId());
+	spriteComponent.SetTexture(GameData::instance().assetManager.GetTexture("assassin_texture"));
 }

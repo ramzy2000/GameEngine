@@ -10,6 +10,7 @@ class PhysicsSystem : public System
 public:
 	void update(ComponentManager& componentManager, std::vector<Entity> entities, sf::Time deltaTime) override;
 	void createBody(ComponentManager& componentManager, Entity entity);
+	void destroyBody(ComponentManager& componentManager, Entity entity);
 };
 
 #endif //! PHYSICS_SYSTEM_H

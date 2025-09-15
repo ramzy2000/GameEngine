@@ -13,6 +13,7 @@
 #include "Entity/Actor/Player.h"
 #include "Entity/Actor/NPC.h"
 #include "Entity/Actor/BackgroundImage.h"
+#include "Entity/StaticBox.h"
 #include <filesystem>
 #include "Game/GameData.h"
 
@@ -72,12 +73,18 @@ void Game::run()
 
     // load entities
     std::shared_ptr<Player> player = std::make_shared<Player>();
-    player->setPosition(0.f, 100.f);
+    player->setPosition(0.f, 600);
     GameData::instance().entities.push_back(player->GetEntityId());
 
-    /*std::shared_ptr<NPC> npc = std::make_shared<NPC>();
-    npc->setPosition(0.0f, 0.f);
-    GameData::instance().entities.push_back(npc->GetEntityId());*/
+    std::shared_ptr<NPC> npc = std::make_shared<NPC>();
+    npc->setPosition(700.0f, 0.f);
+    GameData::instance().entities.push_back(npc->GetEntityId());
+
+    std::shared_ptr<StaticBox> staticBox = std::make_shared<StaticBox>();
+    staticBox->setPosition(0.0f, 0.f);
+    GameData::instance().entities.push_back(staticBox->GetEntityId());
+
+    staticBox->SetBoxSize(b2Vec2({ 500, 500 }));
     
     // start the game loop
     while (GameData::instance().window.isOpen())
