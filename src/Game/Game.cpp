@@ -44,7 +44,6 @@ Game::Game()
     GameData::instance().assetManager.LoadTexture(path2, "background_texture");
     std::string path3 = std::filesystem::current_path().parent_path().generic_string() + "/Textures/wood_floor.png";
     GameData::instance().assetManager.LoadTexture(path3, "wood_floor_texture");
-    
     std::string path4 = std::filesystem::current_path().parent_path().generic_string() + "/Textures/Assassin.png";
     GameData::instance().assetManager.LoadTexture(path4, "assassin_texture");
 }
@@ -67,11 +66,11 @@ void Game::update(sf::Time deltaTime)
 
 void Game::run()
 {
+    // load entities
     std::shared_ptr<BackgroundImage> backgroundImage = std::make_shared<BackgroundImage>();
     backgroundImage->setPosition(-100.f, 0.f);
     GameData::instance().entities.push_back(backgroundImage->GetEntityId());
 
-    // load entities
     std::shared_ptr<Player> player = std::make_shared<Player>();
     player->setPosition(0.f, 600);
     GameData::instance().entities.push_back(player->GetEntityId());

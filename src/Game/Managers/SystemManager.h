@@ -12,15 +12,6 @@
 
 class GameData;
 
-// Store a list of pointers to each system.
-
-// I want to process each system in one frame time.
-// I dont want to have to itterate over each systems entites.
-
-// will this solve this problem
-
-static const unsigned int MAX_SYSTEMS = 10;
-
 class SystemManager
 {
 public:
